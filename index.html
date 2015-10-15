@@ -6,7 +6,7 @@
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/jquery.slick/1.5.8/slick.css"/>
     <script type="text/template" class="template">
         <% _.each(products, function(product) { %>
-            <div><img src="<%- product.images[0].src %>"/></div>
+            <div><img data-lazy="<%- product.images[0].src %>"/></div>
         <% }); %>
     </script>
 
@@ -18,7 +18,12 @@
                 $('.center').html(template(data));
                 $('.center').slick({
                     centerMode: true,
-                    slidesToShow: 3
+                    slidesToShow: 1,
+                    accessibility: false,
+                    autoplay: true,
+                    autoplaySpeed: 5000,
+                    arrows: false,
+                    lazyLoad: 'ondemand'
                 });
             });
         });
@@ -29,6 +34,16 @@
             background-size: cover;
             background-repeat: no-repeat;
             background-position: center center;
+        }
+
+        .center {
+            height: 300px;
+        }
+
+        .slick-slide img {
+            max-width: 100%;
+            max-height: 100%;
+            margin: auto;
         }
     </style>
 </head>
