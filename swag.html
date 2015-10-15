@@ -11,10 +11,8 @@
     </script>
     <script>
         $(document).click(function () {
-            var href = new URI().query(true).href;
-            if (href) {
-                window.top.location.href = href;
-            }
+            var href = new URI().query(true).href || 'http://store.urbandictionary.com/';
+            window.top.location.href = href;
         });
 
         $(function () {
