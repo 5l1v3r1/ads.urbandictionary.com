@@ -13,6 +13,10 @@
     </script>
 
     <script>
+        $(document).click(function () {
+            window.top.location.href = 'http://store.urbandictionary.com/';
+        });
+
         $(function () {
             var template = _.template($('script.template').html());
 
@@ -35,15 +39,20 @@
             background-size: cover;
             background-repeat: no-repeat;
             background-position: center center;
-            display: flex;
-            justify-content: center;
-            flex-direction: column;
+            /*display: flex;*/
+            /*justify-content: center;*/
+            /*flex-direction: column;*/
+        }
+
+        body, button {
+            cursor: pointer;
+        }
+
+        .center {
         }
 
         .slick-slide img {
             margin: auto;
-            max-width: 100%;
-            max-height: 100%;
         }
 
         .headline {
@@ -53,10 +62,6 @@
             font-weight: bold;
             margin: 30px 0;
             color: #242B3E;
-        }
-
-        .center {
-            height: 300px;
         }
 
         button {
@@ -77,9 +82,7 @@
     </style>
 </head>
 <body>
-<div class="center-cont">
-    <div class="center">
-    </div>
+<div class="center">
 </div>
 <div class="headline">
     Urban Dictionary: The Store!
