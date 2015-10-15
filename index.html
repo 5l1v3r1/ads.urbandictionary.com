@@ -6,28 +6,35 @@
     <script src="https://cdn.jsdelivr.net/jquery/1.11.3/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/jquery.slick/1.5.8/slick.min.js"></script>
     <script src="https://cdn.jsdelivr.net/lodash/3.10.1/lodash.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/uri.js/1.16.1/URI.min.js"></script>
     <script type="text/template" class="template">
         <% _.each(products, function(product) { %>
-        <div class="image"><img src="<%- product.images[0].src.replace(/\.\w{3,4}\?v=/, '_medium$&') %>"/></div>
+        <div><img data-lazy="<%- product.images[0].src.replace(/\.\w{3,4}\?v=/, '_large$&') %>"/></div>
         <% }); %>
     </script>
     <script>
         $(document).click(function () {
-            window.top.location.href = 'http://store.urbandictionary.com/';
+            var href = new URI().query(true).href;
+            if (href) {
+                window.top.location.href = href;
+            }
         });
 
         $(function () {
             var template = _.template($('script.template').html());
-//            $.getJSON('http://store.urbandictionary.com/collections/frontpage/products.json?callback=?', function (data) {
-//                $('.center').html(template(data)).slick({
-//                    centerMode: true,
-//                    slidesToShow: 1,
-//                    accessibility: false,
-//                    autoplay: true,
-//                    autoplaySpeed: 5000,
-//                    arrows: false,
-//                });
-//            });
+            $.getJSON('http://store.urbandictionary.com/collections/frontpage/products.json?callback=?', function (data) {
+                $('.center')
+                        .css({height: $('.center').height()})
+                        .html(template(data))
+                        .slick({
+                            slidesToShow: 1,
+                            accessibility: false,
+                            autoplay: true,
+                            autoplaySpeed: 5000,
+                            arrows: false,
+                            lazyLoad: 'ondemand'
+                        });
+            });
         });
     </script>
     <style>
@@ -44,9 +51,15 @@
             cursor: pointer;
         }
 
+        .center .slick-slide {
+            display: flex;
+            justify-content: center;
+        }
+
         .slick-slide img {
             margin: auto;
             max-width: 100%;
+            max-height: 100%;
         }
 
         .headline {
@@ -88,7 +101,6 @@
 <body>
 <div class="parent">
     <div class="center">
-        hello
     </div>
     <div class="headline">
         urban dictionary swag
