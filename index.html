@@ -1,1 +1,39 @@
-hello world
+<html>
+<head>
+    <script src="https://cdn.jsdelivr.net/jquery/1.11.3/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/jquery.slick/1.5.8/slick.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/lodash/3.10.1/lodash.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/jquery.slick/1.5.8/slick.css"/>
+    <script type="text/template" class="template">
+        <% _.each(products, function(product) { %>
+            <div><img src="<%- product.images[0].src %>"/></div>
+        <% }); %>
+    </script>
+
+    <script>
+        $(function () {
+            var template = _.template($('script.template').html());
+
+            $.getJSON('http://store.urbandictionary.com/collections/frontpage/products.json?callback=?', function (data) {
+                $('.center').html(template(data));
+                $('.center').slick({
+                    centerMode: true,
+                    slidesToShow: 3
+                });
+            });
+        });
+    </script>
+    <style>
+        body {
+            background-image: url(./UD_patterns_cracks-blue.png);
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center center;
+        }
+    </style>
+</head>
+<body>
+<div class="center">
+</div>
+</body>
+</html>
