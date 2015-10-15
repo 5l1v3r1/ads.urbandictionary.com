@@ -18,18 +18,16 @@
 
         $(function () {
             var template = _.template($('script.template').html());
-
-            $.getJSON('http://store.urbandictionary.com/collections/frontpage/products.json?callback=?', function (data) {
-                $('.center').html(template(data));
-                $('.center').slick({
-                    centerMode: true,
-                    slidesToShow: 1,
-                    accessibility: false,
-                    autoplay: true,
-                    autoplaySpeed: 5000,
-                    arrows: false,
-                });
-            });
+//            $.getJSON('http://store.urbandictionary.com/collections/frontpage/products.json?callback=?', function (data) {
+//                $('.center').html(template(data)).slick({
+//                    centerMode: true,
+//                    slidesToShow: 1,
+//                    accessibility: false,
+//                    autoplay: true,
+//                    autoplaySpeed: 5000,
+//                    arrows: false,
+//                });
+//            });
         });
     </script>
     <style>
@@ -38,21 +36,12 @@
             background-size: cover;
             background-repeat: no-repeat;
             background-position: center center;
-            /*display: flex;*/
-            /*justify-content: center;*/
-            /*flex-direction: column;*/
             margin: 0;
             padding: 0;
         }
 
         body, button {
             cursor: pointer;
-        }
-
-        .center {
-        }
-
-        .image {
         }
 
         .slick-slide img {
@@ -63,37 +52,50 @@
         .headline {
             text-align: center;
             font-family: 'Lora', serif;
-            font-size: 24px;
+            font-size: 22px;
             font-weight: bold;
-            margin: 15px 0;
+            margin: 12px 0;
             color: #242B3E;
+        }
+
+        .parent {
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .center {
+            flex: 1;
         }
 
         button {
             display: block;
             width: 90%;
-            margin: 0 auto;
-            height: 50px;
+            margin: 0 auto 12px auto;
+            height: 42px;
             background-color: white;
             border-radius: 6px;
             border: 1px solid #9EAFB8;
-            border-bottom: 4px solid #9EAFB8;
+            border-bottom: 2px solid #9EAFB8;
             font-family: 'Source Sans Pro', sans-serif;
             text-transform: uppercase;
-            font-size: 20px;
+            font-size: 16px;
             font-weight: bold;
             color: #151618;
         }
     </style>
 </head>
 <body>
-<div class="center">
+<div class="parent">
+    <div class="center">
+        hello
+    </div>
+    <div class="headline">
+        urban dictionary swag
+    </div>
+    <button>
+        Shop now
+    </button>
 </div>
-<div class="headline">
-    urban dictionary swag
-</div>
-<button>
-    Shop now
-</button>
 </body>
 </html>
