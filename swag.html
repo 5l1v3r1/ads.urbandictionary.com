@@ -17,7 +17,7 @@
 
         $(function () {
             var template = _.template($('script.template').html());
-            $.getJSON('http://store.urbandictionary.com/collections/frontpage/products.json?callback=?', function (data) {
+            $.getJSON('https://urbandictionary.myshopify.com/collections/frontpage/products.json?callback=?', function (data) {
                 $('.center')
                         .css({height: $('.center').height()})
                         .html(template(data))
