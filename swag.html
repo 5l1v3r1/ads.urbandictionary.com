@@ -2,11 +2,8 @@
 <head>
     <link href='https://fonts.googleapis.com/css?family=Lora:700' rel='stylesheet' type='text/css'>
     <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:700' rel='stylesheet' type='text/css'>
-    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/jquery.slick/1.5.8/slick.css"/>
-    <script src="https://cdn.jsdelivr.net/jquery/1.11.3/jquery.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/jquery.slick/1.5.8/slick.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/lodash/3.10.1/lodash.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/uri.js/1.16.1/URI.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/jquery.slick/1.5.8/slick.css" rel="stylesheet" type="text/css"/>
+    <script src="https://cdn.jsdelivr.net/g/jquery@1.11.3,jquery.slick@1.5.8,lodash@3.10.1,uri.js@1.16.1"></script>
     <script type="text/template" class="template">
         <% _.each(products, function(product) { %>
         <div><img data-lazy="<%- product.images[0].src.replace(/\.\w{3,4}\?v=/, '_large$&') %>"/></div>
