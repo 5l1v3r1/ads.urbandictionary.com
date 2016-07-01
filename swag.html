@@ -6,7 +6,7 @@
     <script src="https://cdn.jsdelivr.net/g/jquery@1.11.3,jquery.slick@1.5.8,lodash@3.10.1,uri.js@1.16.1"></script>
     <script type="text/template" class="template">
         <% _.each(products, function(product) { %>
-        <div><img data-lazy="<%- product.images[0].src.replace(/\.\w{3,4}\?v=/, '_large$&') %>"/></div>
+        <div><img data-lazy="<%- product.images[0].src.replace(/(\.\w{3,4}\?v=)/, '_large$1') %>"/></div>
         <% }); %>
     </script>
     <script>
