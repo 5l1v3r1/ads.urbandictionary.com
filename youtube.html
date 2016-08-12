@@ -61,7 +61,10 @@
     <script src="https://cdn.jsdelivr.net/g/jquery@1.11.3,uri.js@1.16.1"></script>
     <script>
       $(document).click(function () {
-        var href = new URI().query(true).href || 'http://store.urbandictionary.com/';
+        var href = new URI().query(true).href;
+        if (!/^https?:\/\/adclick\.g\.doubleclick\.net\//.test(href)) {
+          href = 'https://urbandictionary.store/';
+        }
         window.top.location.href = href;
       });
 
